@@ -1,0 +1,198 @@
+#include <iostream>
+#include <cmath> // Use <cmath> for C++
+using namespace std;
+
+float calcu[20];
+
+float Add();
+float Subtract();
+float Multiplication(); // Corrected spelling
+float Division();
+float Sin();
+float Cos();
+float Tan();
+float Sin_inverse();
+float Cos_inverse();
+float Tan_inverse();
+void display(float); // Change parameter type to float
+
+int main() {
+    A:
+    cout << "\t 1: Arithmetic operation " << endl;
+    cout << "\t 2: Trigonometric operation " << endl;
+    cout << "\t 3: Exit \n";
+   
+    int userinput;
+    cin >> userinput;
+   
+    if (userinput == 1) {
+        B:
+        cout << "1 : Addition " << endl;
+        cout << "2 : Subtraction " << endl;
+        cout << "3 : Multiplication " << endl;
+        cout << "4 : Division" << endl;
+        cout << "5 : Main menu" << endl;
+       
+        cout << "\t Enter your choice = ";
+        int choice;
+        cin >> choice;
+       
+        if (choice == 1) {
+            calcu[choice] = Add();
+        } else if (choice == 2) {
+            calcu[choice] = Subtract();
+        } else if (choice == 3) {
+            calcu[choice] = Multiplication();
+        } else if (choice == 4) {
+            calcu[choice] = Division();
+        } else if (choice == 5) {
+            goto A; // Go back to main menu
+        } else {
+            cout << "Invalid choice, please try again." << endl;
+            goto B; // Retry the operations menu
+        }
+
+        display(calcu[choice]);
+        goto B; // Repeat the arithmetic operations menu
+    }
+   
+    if (userinput == 2) {
+        c:
+        cout << "\t 1: Sin function" << endl;
+        cout << "\t 2: Cos function" << endl;
+        cout << "\t 3: Tan function" << endl;
+        cout << "\t 4: Sin_inverse" << endl;
+        cout << "\t 5: Cos_inverse" << endl;
+        cout << "\t 6: Tan_inverse" << endl;
+        cout << "\t 7: Main menu" << endl;
+
+        int choice;
+        cin >> choice;
+       
+        if (choice == 1) {
+            calcu[choice] = Sin();
+        } else if (choice == 2) {
+            calcu[choice] = Cos();
+        } else if (choice == 3) {
+            calcu[choice] = Tan();
+        } else if (choice == 4) {
+            calcu[choice] = Sin_inverse();
+        } else if (choice == 5) {
+            calcu[choice] = Cos_inverse();
+        } else if (choice == 6) {
+            calcu[choice] = Tan_inverse();
+        } else if (choice == 7) {
+            goto A; // Go back to main menu
+        } else {
+            cout << "Invalid choice, please try again." << endl;
+            goto c; // Retry the trigonometric operations menu
+        }
+
+        display(calcu[choice]);
+        goto c; // Repeat the trigonometric operations menu
+    }
+
+    if (userinput == 3) {
+        return 0; // Exit the program
+    }
+
+    return 0; // Additional safety return
+}
+
+float Add() {
+    int a, b;
+    cout << "Enter first number: ";
+    cin >> a;
+    cout << "Enter second number: ";
+    cin >> b;
+    return (a + b);
+}
+
+float Subtract() {
+    int a, b;
+    cout << "Enter first number: ";
+    cin >> a;
+    cout << "Enter second number: ";
+    cin >> b;
+    return (a - b);
+}
+
+float Multiplication() {
+    int a, b;
+    cout << "Enter first number: ";
+    cin >> a;
+    cout << "Enter second number: ";
+    cin >> b;
+    return (a * b);
+}
+
+float Division() {
+    int a, b;
+    cout << "Enter first number: ";
+    cin >> a;
+    cout << "Enter second number: ";
+    cin >> b;
+
+    if (b != 0) {
+        return (float)a / b; // Cast to float for accurate division
+    } else {
+        cout << "Error: Division by zero!" << endl;
+        return 0;
+    }
+}
+
+float Sin() {
+    float a;
+    cout << "Enter value in radians: ";
+    cin >> a;
+    return sin(a);
+}
+
+float Cos() {
+    float a;
+    cout << "Enter value in radians: ";
+    cin >> a;
+    return cos(a);
+}
+
+float Tan() {
+    float a;
+    cout << "Enter value in radians: ";
+    cin >> a;
+    return tan(a);
+}
+
+float Sin_inverse() {
+    float a;
+    cout << "Enter value (must be between -1 and 1): ";
+    cin >> a;
+    if (a >= -1 && a <= 1) {
+        return asin(a);
+    } else {
+        cout << "Error: Input out of range!" << endl;
+        return 0;
+    }
+}
+
+float Cos_inverse() {
+    float a;
+    cout << "Enter value (must be between -1 and 1): ";
+    cin >> a;
+    if (a >= -1 && a <= 1) {
+        return acos(a);
+    } else {
+        cout << "Error: Input out of range!" << endl;
+        return 0;
+    }
+}
+
+float Tan_inverse() {
+    float a;
+    cout << "Enter value: ";
+    cin >> a;
+    return atan(a);
+}
+
+void display(float result) {
+    cout << "Result: " << result << endl;
+}
